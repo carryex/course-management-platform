@@ -6,9 +6,13 @@
   "mounts": [
     "source=${localEnv:HOME}/.ssh,target=/root/.ssh,type=bind,consistency=cached"
   ],
-  "extensions": ["dbaeumer.vscode-eslint", "esbenp.prettier-vscode"],
-  "settings": {
-    "terminal.integrated.shell.linux": "/bin/bash"
+  "customizations": {
+    "vscode": {
+      "extensions": ["dbaeumer.vscode-eslint", "esbenp.prettier-vscode"],
+      "settings": {
+        "terminal.integrated.shell.linux": "/bin/bash"
+      }
+    }
   },
   "forwardPorts": [3000],
   "postCreateCommand": "echo 'Dev container initialized'",
