@@ -3,6 +3,9 @@
   "dockerFile": "Dockerfile",
   "context": "..",
   "workspaceFolder": "/workspace",
+  "mounts": [
+    "source=${localEnv:HOME}/.ssh,target=/root/.ssh,type=bind,consistency=cached"
+  ],
   "extensions": ["dbaeumer.vscode-eslint", "esbenp.prettier-vscode"],
   "settings": {
     "terminal.integrated.shell.linux": "/bin/bash"
