@@ -1,0 +1,19 @@
+{
+  "name": "Next.js DevContainer",
+  "dockerFile": "Dockerfile",
+  "context": "..",
+  "workspaceFolder": "/workspace",
+  "extensions": ["dbaeumer.vscode-eslint", "esbenp.prettier-vscode"],
+  "settings": {
+    "terminal.integrated.shell.linux": "/bin/bash"
+  },
+  "forwardPorts": [3000],
+  "postCreateCommand": "echo 'Dev container initialized'",
+  "remoteUser": "root",
+  "portsAttributes": {
+    "3000": {
+      "label": "Next.js App",
+      "onAutoForward": "openBrowser"
+    }
+  }
+}
