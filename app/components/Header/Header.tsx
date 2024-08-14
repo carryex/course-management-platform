@@ -24,6 +24,14 @@ const Header = () => {
     },
   ];
 
+  const handleMouseEnter = () => {
+    setIsCategoriesOpen(true);
+  };
+
+  const handleMouseLeave = () => {
+    setIsCategoriesOpen(false);
+  };
+
   return (
     <header className="bg-white shadow-md p-4 flex justify-between items-center flex-wrap">
       {/* Гамбургер-меню для мобильных устройств */}
@@ -41,20 +49,18 @@ const Header = () => {
       </div>
 
       {/* Categories */}
-      <div className="relative flex-shrink-0 px-2 hidden md:block">
+      <div
+        className="relative flex-shrink-0 px-2 hidden md:block"
+        onMouseEnter={handleMouseEnter}
+        onMouseLeave={handleMouseLeave}
+      >
         <button
           className="text-gray-600 hover:text-gray-900 whitespace-nowrap"
-          onMouseEnter={() => setIsCategoriesOpen(true)}
-          onMouseLeave={() => setIsCategoriesOpen(false)}
         >
           Categories
         </button>
         {isCategoriesOpen && (
-          <div
-            className="absolute left-0 mt-2 w-64 bg-white shadow-lg rounded-lg py-2 z-50"
-            onMouseEnter={() => setIsCategoriesOpen(true)}
-            onMouseLeave={() => setIsCategoriesOpen(false)}
-          >
+          <div className="absolute left-0 w-64 bg-white shadow-lg rounded-lg py-2 z-50">
             {categories.map((category) => (
               <div key={category.title} className="border-b last:border-b-0">
                 <div className="px-4 py-2 text-gray-600 hover:bg-gray-100">
