@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import Image from 'next/image';
 import { FaShoppingCart, FaUserCircle, FaGlobe, FaBars } from 'react-icons/fa';
 import { ROUTES } from '../../constants/routes';
@@ -7,6 +7,9 @@ import { ROUTES } from '../../constants/routes';
 const Header = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [isCategoriesOpen, setIsCategoriesOpen] = useState(false);
+  const [isLanguageMenuOpen, setIsLanguageMenuOpen] = useState(false);
+
+  const languageMenuRef = useRef<HTMLDivElement>(null);
 
   // Mock categories data
   const categories = [
@@ -24,6 +27,13 @@ const Header = () => {
     },
   ];
 
+  // Mock languages data
+  const languages = ['English', 'Español', 'Français', 'Deutsch'];
+
+  const toggleLanguageMenu = () => {
+    setIsLanguageMenuOpen(!isLanguageMenuOpen);
+  };
+
   const handleMouseEnter = () => {
     setIsCategoriesOpen(true);
   };
@@ -31,6 +41,26 @@ const Header = () => {
   const handleMouseLeave = () => {
     setIsCategoriesOpen(false);
   };
+
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      console.log(event)
+      if (languageMenuRef.current && !languageMenuRef.current.contains(event.target as Node)) {
+        console.log('here')
+        setIsLanguageMenuOpen(false);
+      }
+    };
+
+    if (isLanguageMenuOpen) {
+      document.addEventListener('mousedown', handleClickOutside);
+    } else {
+      document.removeEventListener('mousedown', handleClickOutside);
+    }
+
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, [isLanguageMenuOpen]);
 
   return (
     <header className="bg-white shadow-md p-4 flex justify-between items-center flex-wrap">
@@ -121,9 +151,27 @@ const Header = () => {
       </div>
 
       {/* Language Selector */}
-      <button className="pl-2 flex-shrink-0 text-gray-600 hover:text-gray-900">
-        <FaGlobe size={20} />
-      </button>
+      <div className="relative" ref={languageMenuRef}>
+        <button
+          className="pl-2 flex-shrink-0 text-gray-600 hover:text-gray-900"
+          onClick={toggleLanguageMenu}
+        >
+          <FaGlobe size={20} />
+        </button>
+        {isLanguageMenuOpen && (
+          <div className="absolute right-0 mt-2 w-32 bg-white shadow-lg rounded-lg py-2 z-50">
+            {languages.map((language) => (
+              <button
+                key={language}
+                className="block w-full text-left px-4 py-2 text-gray-600 hover:bg-gray-100"
+                onClick={() => setIsLanguageMenuOpen(false)}
+              >
+                {language}
+              </button>
+            ))}
+          </div>
+        )}
+      </div>
     </header>
   );
 };
