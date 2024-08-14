@@ -151,7 +151,7 @@ const Header = () => {
       </div>
 
       {/* Language Selector */}
-      <div className="relative" ref={languageMenuRef}>
+      <div className="relative flex" ref={languageMenuRef}>
         <button
           className="pl-2 flex-shrink-0 text-gray-600 hover:text-gray-900"
           onClick={toggleLanguageMenu}
@@ -159,7 +159,7 @@ const Header = () => {
           <FaGlobe size={20} />
         </button>
         {isLanguageMenuOpen && (
-          <div className="absolute right-0 mt-2 w-32 bg-white shadow-lg rounded-lg py-2 z-50">
+          <div className="absolute right-0 mt-6 w-32 bg-white shadow-lg rounded-lg py-2 z-50">
             {languages.map((language) => (
               <button
                 key={language}
