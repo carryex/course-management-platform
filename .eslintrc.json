@@ -1,6 +1,11 @@
 {
   "extends": [
     "next/core-web-vitals",
-    "plugin:storybook/recommended"
-  ]
+    "plugin:storybook/recommended",
+    "plugin:prettier/recommended" // Добавляем Prettier в качестве последнего расширения
+  ],
+  "plugins": ["prettier"],
+  "rules": {
+    "prettier/prettier": "error" // Включаем Prettier как правило ESLint
+  }
 }

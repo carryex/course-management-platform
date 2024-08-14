@@ -41,10 +41,9 @@ export const LanguageMenuOpen: Story = {
   },
 };
 
-
 export const FullData: Story = {
   args: {
     languages,
-    categories
-  }
-}
+    categories,
+  },
+};
