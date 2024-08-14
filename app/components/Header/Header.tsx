@@ -1,34 +1,21 @@
 import Link from 'next/link';
-import { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import Image from 'next/image';
 import { FaShoppingCart, FaUserCircle, FaGlobe, FaBars } from 'react-icons/fa';
 import { ROUTES } from '../../constants/routes';
 
-const Header = () => {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+interface HeaderProps {
+  isLoggedIn?: boolean;
+  categories?: Array<{ title: string; subcategories: string[] }>;
+  languages?: string[];
+}
+
+const Header: React.FC<HeaderProps> = ({ isLoggedIn = false, categories, languages }) => {
   const [isCategoriesOpen, setIsCategoriesOpen] = useState(false);
   const [isLanguageMenuOpen, setIsLanguageMenuOpen] = useState(false);
 
   const languageMenuRef = useRef<HTMLDivElement>(null);
-
-  // Mock categories data
-  const categories = [
-    {
-      title: 'Development',
-      subcategories: ['Web Development', 'Data Science', 'Mobile Development'],
-    },
-    {
-      title: 'Business',
-      subcategories: ['Finance', 'Entrepreneurship', 'Communication'],
-    },
-    {
-      title: 'IT & Software',
-      subcategories: ['Networking', 'Hardware', 'Security'],
-    },
-  ];
-
-  // Mock languages data
-  const languages = ['English', 'Español', 'Français', 'Deutsch'];
 
   const toggleLanguageMenu = () => {
     setIsLanguageMenuOpen(!isLanguageMenuOpen);
@@ -79,7 +66,7 @@ const Header = () => {
       </div>
 
       {/* Categories */}
-      <div
+      {categories && <div
         className="relative flex-shrink-0 px-2 hidden md:block"
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
@@ -111,8 +98,7 @@ const Header = () => {
             ))}
           </div>
         )}
-      </div>
-
+      </div>}
       {/* Поиск */}
       <div className="flex-grow px-2 hidden md:block">
         <input
@@ -151,7 +137,7 @@ const Header = () => {
       </div>
 
       {/* Language Selector */}
-      <div className="relative flex" ref={languageMenuRef}>
+      {languages && <div className="relative flex" ref={languageMenuRef}>
         <button
           className="pl-2 flex-shrink-0 text-gray-600 hover:text-gray-900"
           onClick={toggleLanguageMenu}
@@ -171,7 +157,7 @@ const Header = () => {
             ))}
           </div>
         )}
-      </div>
+      </div>}
     </header>
   );
 };
