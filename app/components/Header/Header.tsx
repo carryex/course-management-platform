@@ -1,8 +1,11 @@
 import Link from 'next/link';
 import React, { useEffect, useRef, useState } from 'react';
 import Image from 'next/image';
-import { FaShoppingCart, FaUserCircle, FaGlobe, FaBars } from 'react-icons/fa';
+import { FaShoppingCart, FaGlobe, FaBars } from 'react-icons/fa';
 import { ROUTES } from '../../constants/routes';
+import Drawer from '../Drawer';
+import CategoryList from '../CategoryList';
+import AuthButtons from '../AuthButtons';
 
 interface HeaderProps {
   isLoggedIn?: boolean;
@@ -17,11 +20,16 @@ const Header: React.FC<HeaderProps> = ({
 }) => {
   const [isCategoriesOpen, setIsCategoriesOpen] = useState(false);
   const [isLanguageMenuOpen, setIsLanguageMenuOpen] = useState(false);
+  const [isDrawerOpen, setIsDrawerOpen] = useState(false);
 
   const languageMenuRef = useRef<HTMLDivElement>(null);
 
   const toggleLanguageMenu = () => {
     setIsLanguageMenuOpen(!isLanguageMenuOpen);
+  };
+
+  const toggleDrawer = () => {
+    setIsDrawerOpen(!isDrawerOpen);
   };
 
   const handleMouseEnter = () => {
@@ -56,7 +64,10 @@ const Header: React.FC<HeaderProps> = ({
   return (
     <header className="bg-white shadow-md p-4 flex justify-between items-center flex-wrap">
       {/* Гамбургер-меню для мобильных устройств */}
-      <button className="md:hidden text-gray-600 hover:text-gray-900">
+      <button
+        className="md:hidden text-gray-600 hover:text-gray-900"
+        onClick={toggleDrawer}
+      >
         <FaBars size={20} />
       </button>
 
@@ -82,24 +93,7 @@ const Header: React.FC<HeaderProps> = ({
           </button>
           {isCategoriesOpen && (
             <div className="absolute left-0 w-64 bg-white shadow-lg rounded-lg py-2 z-50">
-              {categories.map((category) => (
-                <div key={category.title} className="border-b last:border-b-0">
-                  <div className="px-4 py-2 text-gray-600 hover:bg-gray-100">
-                    {category.title}
-                  </div>
-                  <div className="pl-4">
-                    {category.subcategories.map((subcategory) => (
-                      <Link
-                        href="#"
-                        key={subcategory}
-                        className="block px-4 py-2 text-gray-600 hover:bg-gray-100"
-                      >
-                        {subcategory}
-                      </Link>
-                    ))}
-                  </div>
-                </div>
-              ))}
+              <CategoryList categories={categories} />
             </div>
           )}
         </div>
@@ -131,26 +125,7 @@ const Header: React.FC<HeaderProps> = ({
 
       {/* Аутентификация */}
       <div className="flex-shrink-0 whitespace-nowrap px-2 hidden md:block">
-        {isLoggedIn ? (
-          <Link href={ROUTES.PROFILE.path}>
-            <FaUserCircle size={30} />
-          </Link>
-        ) : (
-          <>
-            <Link
-              href={ROUTES.LOGIN.path}
-              className="text-gray-600 hover:text-gray-900 px-4 py-2 rounded border mr-2"
-            >
-              Log in
-            </Link>
-            <Link
-              href={ROUTES.SIGNUP.path}
-              className="px-4 py-2 border rounded text-gray-600 hover:bg-gray-200"
-            >
-              Sign up
-            </Link>
-          </>
-        )}
+        <AuthButtons isLoggedIn={isLoggedIn} />
       </div>
 
       {/* Language Selector */}
@@ -177,6 +152,13 @@ const Header: React.FC<HeaderProps> = ({
           )}
         </div>
       )}
+
+      <Drawer isOpen={isDrawerOpen} onClose={toggleDrawer} position="left">
+        {categories && <CategoryList categories={categories} />}
+        <div className="mt-4">
+          <AuthButtons isLoggedIn={isLoggedIn} />
+        </div>
+      </Drawer>
     </header>
   );
 };
