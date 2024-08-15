@@ -1,3 +1,5 @@
+'use client';
+
 import Link from 'next/link';
 import React, { useEffect, useRef, useState } from 'react';
 import Image from 'next/image';
@@ -62,7 +64,7 @@ const Header: React.FC<HeaderProps> = ({
   }, [isLanguageMenuOpen]);
 
   return (
-    <header className="bg-white shadow-md p-4 flex justify-between items-center flex-wrap">
+    <header className="bg-white py-4 px-4 lg:px-14 flex justify-between items-center flex-wrap">
       {/* Гамбургер-меню для мобильных устройств */}
       <button
         className="md:hidden text-gray-600 hover:text-gray-900"
