@@ -16,13 +16,13 @@ const AuthButtons: React.FC<AuthButtonsProps> = ({ isLoggedIn }) => (
       <>
         <Link
           href={ROUTES.LOGIN.path}
-          className="text-gray-600 hover:text-gray-900 px-4 py-2 rounded border mr-2"
+          className="text-gray-600 hover:text-gray-900 px-4 py-2 rounded-md border mr-2"
         >
           Log in
         </Link>
         <Link
           href={ROUTES.SIGNUP.path}
-          className="px-4 py-2 border rounded text-gray-600 hover:bg-gray-200"
+          className="px-4 py-2 border rounded-md bg-indigo-600 text-white hover:bg-indigo-700 transition duration-300"
         >
           Sign up
         </Link>
