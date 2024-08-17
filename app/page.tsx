@@ -2,6 +2,8 @@ import Carousel from './components/Carousel';
 import { slides } from './components/Carousel/Carousel.mock';
 import AuthForm from './components/AuthForm';
 import Quiz from './components/Quiz';
+import Accordion from './components/Accordion';
+import { accordionItems } from './components/Accordion/Accordion.mock';
 
 export default function Home() {
   return (
@@ -17,10 +19,24 @@ export default function Home() {
           <AuthForm mode="signup" />
         </div>
       </div>
-      <div className="w-full bg-slate-50">
+      <div className="w-full bg-slate-50 py-4">
         <Quiz />
       </div>
-      <div className="w-full h-[200px]"></div>
+      <div className="w-full">
+        <div className="py-12 px-4 sm:px-6 md:px-10 lg:px-14 bg-gray-900">
+          <p className="text-xl text-white text-center">Start Learning</p>
+          <h2 className="text-4xl text-white text-center">Popular Courses</h2>
+          <div className="pt-12">
+            <Accordion items={accordionItems} />
+          </div>
+        </div>
+      </div>
+      <div className="w-full">
+        <div className="py-8 px-4 sm:px-6 md:px-10 lg:px-14 bg-gray-900">
+          <p className="text-xl text-white text-center">The platform</p>
+          <h2 className="text-4xl text-white text-center">Hands-on learning</h2>
+        </div>
+      </div>
     </main>
   );
 }
