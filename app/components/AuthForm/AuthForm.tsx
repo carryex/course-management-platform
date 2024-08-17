@@ -7,6 +7,7 @@ import {
   FaTwitter,
   FaApple,
 } from 'react-icons/fa';
+import Button from '../Button';
 
 interface AuthFormProps {
   mode: 'login' | 'signup';
@@ -16,7 +17,7 @@ const AuthForm: React.FC<AuthFormProps> = ({ mode }) => {
   const isLogin = mode === 'login';
 
   return (
-    <div className="p-6 border shadow-md rounded-lg bg-white max-w-md">
+    <div className="p-6 rounded-lg bg-white max-w-md">
       <h2 className="text-2xl font-bold mb-6">
         {isLogin
           ? 'Log in to Platform'
@@ -47,12 +48,9 @@ const AuthForm: React.FC<AuthFormProps> = ({ mode }) => {
             </a>
           </div>
         )}
-        <button
-          type="submit"
-          className="w-full bg-indigo-600 text-white py-2 rounded-md hover:bg-indigo-700 transition duration-300"
-        >
+        <Button color="primary" variant="contained" size="sm" fullWidth>
           {isLogin ? 'Log in' : 'Sign Up'}
-        </button>
+        </Button>
       </form>
       <div className="mt-4 text-left">
         <p className="text-sm">

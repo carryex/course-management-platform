@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import { FaUserCircle } from 'react-icons/fa';
 import { ROUTES } from '../../constants/routes';
+import Button from '../Button';
 
 interface AuthButtonsProps {
   isLoggedIn: boolean;
@@ -13,20 +14,26 @@ const AuthButtons: React.FC<AuthButtonsProps> = ({ isLoggedIn }) => (
         <FaUserCircle size={30} className="text-gray-600 hover:text-gray-900" />
       </Link>
     ) : (
-      <>
-        <Link
+      <div className="gap-2 flex flex-row">
+        <Button
           href={ROUTES.LOGIN.path}
-          className="text-gray-600 hover:text-gray-900 px-4 py-2 rounded-md border mr-2"
+          link
+          variant="outlined"
+          color="secondary"
+          size="sm"
         >
           Log in
-        </Link>
-        <Link
+        </Button>
+        <Button
           href={ROUTES.SIGNUP.path}
-          className="px-4 py-2 border rounded-md bg-indigo-600 text-white hover:bg-indigo-700 transition duration-300"
+          link
+          variant="contained"
+          color="primary"
+          size="sm"
         >
           Sign up
-        </Link>
-      </>
+        </Button>
+      </div>
     )}
   </>
 );
