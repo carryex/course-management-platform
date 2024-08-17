@@ -1,7 +1,10 @@
 import Link from 'next/link';
 
 interface CategoryListProps {
-  categories: Array<{ title: string; subcategories: string[] }>;
+  categories: Array<{
+    title: string;
+    subcategories: string[];
+  }>;
 }
 
 const CategoryList: React.FC<CategoryListProps> = ({ categories }) => (

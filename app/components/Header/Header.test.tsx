@@ -11,7 +11,9 @@ describe('Header', () => {
 
   it('renders the navigation links', () => {
     render(<Header />);
-    const navLinks = screen.getAllByRole('link', { name: /courses|about/i });
+    const navLinks = screen.getAllByRole('link', {
+      name: /courses|about/i,
+    });
     expect(navLinks.length).toBeGreaterThan(1);
   });
 

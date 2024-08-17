@@ -11,7 +11,10 @@ import AuthButtons from '../AuthButtons';
 
 interface HeaderProps {
   isLoggedIn?: boolean;
-  categories?: Array<{ title: string; subcategories: string[] }>;
+  categories?: Array<{
+    title: string;
+    subcategories: string[];
+  }>;
   languages?: string[];
 }
 

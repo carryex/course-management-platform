@@ -40,7 +40,8 @@ const Carousel: React.FC<CarouselProps> = ({ slides }) => {
                 key={i}
                 className="mb-2 text-lg text-gray-300 bg-gray-900 inline"
               >
-                &nbsp;+&nbsp;{paragraph}
+                &nbsp;+&nbsp;
+                {paragraph}
               </p>
             ))}
           </div>
