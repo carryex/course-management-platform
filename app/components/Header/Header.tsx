@@ -8,6 +8,7 @@ import { ROUTES } from '../../constants/routes';
 import Drawer from '../Drawer';
 import CategoryList from '../CategoryList';
 import AuthButtons from '../AuthButtons';
+import IconButton from '../IconButton';
 
 interface HeaderProps {
   isLoggedIn?: boolean;
@@ -69,12 +70,9 @@ const Header: React.FC<HeaderProps> = ({
   return (
     <header className="bg-white py-4 px-4 sm:px-6 md:px-10 lg:px-14 flex justify-between items-center flex-wrap">
       {/* Гамбургер-меню для мобильных устройств */}
-      <button
-        className="md:hidden text-gray-600 hover:text-gray-900"
-        onClick={toggleDrawer}
-      >
-        <FaBars size={20} />
-      </button>
+      <div className="md:hidden justify-center flex">
+        <IconButton onClick={toggleDrawer} icon={FaBars} />
+      </div>
 
       {/* Логотип */}
       <div className="md:flex-shrink-0 md:pr-2 flex-grow md:flex-grow-0">
@@ -121,12 +119,13 @@ const Header: React.FC<HeaderProps> = ({
       </Link>
 
       {/* Cart */}
-      <Link
-        href={ROUTES.CART.path}
-        className="text-gray-600 hover:text-gray-900 px-2 flex-shrink-0"
-      >
-        <FaShoppingCart size={20} />
-      </Link>
+      <div className="justify-center flex px-2 flex-shrink-0">
+        <IconButton
+          icon={FaShoppingCart}
+          variant="link"
+          href={ROUTES.CART.path}
+        />
+      </div>
 
       {/* Аутентификация */}
       <div className="flex-shrink-0 whitespace-nowrap px-2 hidden md:block">
@@ -136,12 +135,10 @@ const Header: React.FC<HeaderProps> = ({
       {/* Language Selector */}
       {languages && (
         <div className="relative flex" ref={languageMenuRef}>
-          <button
-            className="pl-2 flex-shrink-0 text-gray-600 hover:text-gray-900"
-            onClick={toggleLanguageMenu}
-          >
-            <FaGlobe size={20} />
-          </button>
+          <div className="justify-center flex pl-2 flex-shrink-0">
+            <IconButton icon={FaGlobe} onClick={toggleLanguageMenu} />
+          </div>
+
           {isLanguageMenuOpen && (
             <div className="absolute right-0 mt-6 w-32 bg-white shadow-lg rounded-lg py-2 z-50">
               {languages.map((language) => (
