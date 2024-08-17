@@ -15,7 +15,7 @@ export const slides = [
       'Get personalized job listings and practice interview questions',
       'Assess your job-readiness with AI',
     ],
-    backgroundImage: '/path-to-your-background-image.jpg',
+    backgroundImage: '/slide1.png',
   },
   {
     id: 3,
@@ -24,7 +24,7 @@ export const slides = [
       'Learn Python, JavaScript, and more',
       '600+ courses, paths, and case studies for all skill levels',
     ],
-    backgroundImage: '/path-to-your-background-image.jpg',
+    backgroundImage: '/slide1.png',
   },
   {
     id: 4,
@@ -33,6 +33,6 @@ export const slides = [
       'AI courses and case studies on ChatGPT, NLP, and more',
       'AI-powered features for efficient learning',
     ],
-    backgroundImage: '/path-to-your-background-image.jpg',
+    backgroundImage: '/slide1.png',
   },
 ];
