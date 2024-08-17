@@ -13,14 +13,14 @@ export default function Home() {
         </div>
 
         {/* Блок с формой авторизации */}
-        <div className="w-full lg:w-1/2 p-2 py-4 sm:py-6 md:py-8 lg:py-0 flex items-center bg-gray-100 lg:bg-transparent lg:ml-12">
+        <div className="w-full lg:w-1/2 p-2 py-4 sm:py-6 justify-center md:py-8 lg:py-0 flex items-center lg:bg-transparent lg:ml-12 lg:justify-start">
           <AuthForm mode="signup" />
         </div>
       </div>
-      <div className="w-full">
+      <div className="w-full bg-slate-50">
         <Quiz />
       </div>
-      <div className="w-full h-[200px] bg-zzz"></div>
+      <div className="w-full h-[200px]"></div>
     </main>
   );
 }

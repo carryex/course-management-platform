@@ -61,7 +61,7 @@ const Quiz = () => {
   };
 
   return (
-    <div className="flex flex-col my-8 px-4">
+    <div className="flex flex-col py-8 px-4 lg:px-14 md:px-10 sm:px-6">
       {/* Header */}
       <div className="text-left md:text-center">
         <h2 className="text-4xl font-bold mb-4">
