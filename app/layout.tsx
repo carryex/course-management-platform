@@ -14,9 +14,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className="min-w-96">
-        <HeaderContainer />
-        {children}
+      <body className="min-w-96 w-full flex justify-center">
+        <div className="max-w-screen-2xl w-full">
+          <HeaderContainer />
+          {children}
+        </div>
       </body>
     </html>
   );
