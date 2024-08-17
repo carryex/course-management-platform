@@ -26,7 +26,7 @@ export default function Home() {
         <div className="py-12 px-4 sm:px-6 md:px-10 lg:px-14 bg-gray-900">
           <p className="text-xl text-white text-center">Start Learning</p>
           <h2 className="text-4xl text-white text-center">Popular Courses</h2>
-          <div className="pt-12">
+          <div className="pt-8">
             <Accordion items={accordionItems} />
           </div>
         </div>
