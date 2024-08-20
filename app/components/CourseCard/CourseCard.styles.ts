@@ -4,14 +4,18 @@ const courseCardStyles = tv({
   base: 'border rounded-md bg-white relative min-h-72 flex flex-col cursor-pointer transform group-hover:-translate-y-2 group-hover:translate-x-2 transition-transform duration-300 ease-in-out z-50 border-gray-900 overflow-hidden',
   variants: {
     variant: {
-      free: '',
+      free: {
+        careerWrapper: 'border-0',
+      },
       career: {
-        base: 'transform -translate-y-1 translate-x-1 border-white',
+        base: 'transform -translate-y-1 translate-x-1 border-gray-900',
         header: 'text-white bg-gray-900',
+        careerWrapper: 'border border-white ',
       },
     },
   },
   slots: {
+    careerWrapper: 'rounded-md overflow-hidden',
     header: 'bg-gray-100 py-2 px-4 text-sm font-mono',
     body: 'p-4 flex grow flex-col',
     title: 'text-xl font-bold',
