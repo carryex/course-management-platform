@@ -50,22 +50,53 @@ export const accordionItems = [
     ),
   },
   {
-    title: 'How does it work?',
+    title: 'Free',
     content: (
-      <p className="text-white">
-        Tailwind works by scanning your HTML files and removing any unused
-        styles in your final build.
-      </p>
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        {AI.map((course) => (
+          <CourseCard {...course} key={course.title} />
+        ))}
+      </div>
     ),
   },
   {
-    title: 'Why use Tailwind?',
+    title: 'New to coding',
     content: (
-      <p className="text-white">
-        Tailwind is a highly customizable, low-level CSS framework that gives
-        you all of the building blocks you need to build bespoke designs without
-        any annoying opinionated styles you have to fight to override.
-      </p>
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        {AI.map((course) => (
+          <CourseCard {...course} key={course.title} />
+        ))}
+      </div>
+    ),
+  },
+  {
+    title: 'Most popular',
+    content: (
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        {AI.map((course) => (
+          <CourseCard {...course} key={course.title} />
+        ))}
+      </div>
+    ),
+  },
+  {
+    title: 'Skill paths',
+    content: (
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        {AI.map((course) => (
+          <CourseCard {...course} key={course.title} />
+        ))}
+      </div>
+    ),
+  },
+  {
+    title: 'Career paths',
+    content: (
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        {AI.map((course) => (
+          <CourseCard {...course} key={course.title} />
+        ))}
+      </div>
     ),
   },
 ];
