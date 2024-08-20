@@ -1,75 +1,26 @@
 'use client';
-import React, { useState, useRef, useEffect } from 'react';
-import { FaAngleRight } from 'react-icons/fa';
-import { tv, VariantProps } from 'tailwind-variants';
+import React, { useEffect, useState } from 'react';
+import AccordionSection from './AccordionSection';
 import { baseAccordionStyles } from './Accordion.styles';
-
-interface AccordionItemProps extends VariantProps<typeof baseAccordionStyles> {
-  title: string;
-  content: React.ReactNode;
-  isOpen?: boolean;
-  onToggle: () => void;
-}
-
-const AccordionItem: React.FC<AccordionItemProps> = ({
-  title,
-  content,
-  isOpen = false,
-  onToggle,
-}) => {
-  const contentRef = useRef<HTMLDivElement>(null);
-  const [maxHeight, setMaxHeight] = useState<string>('0px');
-
-  useEffect(() => {
-    if (contentRef.current) {
-      setMaxHeight(isOpen ? `${contentRef.current.scrollHeight}px` : '0px');
-    }
-  }, [isOpen]);
-
-  const {
-    base,
-    button,
-    header,
-    title: titleClass,
-    icon,
-    contentWrapper,
-    content: contentClass,
-  } = baseAccordionStyles({ open: isOpen });
-
-  return (
-    <div className={base()}>
-      <button className={button()} onClick={onToggle}>
-        <div className={header()}>
-          <h3 className={titleClass()}>{title}</h3>
-          <div className={icon()}>
-            <FaAngleRight />
-          </div>
-        </div>
-      </button>
-      <div
-        ref={contentRef}
-        style={{
-          maxHeight: maxHeight,
-          transition: 'max-height 0.3s ease',
-        }}
-        className={contentWrapper()}
-      >
-        <div className={contentClass()}>{content}</div>
-      </div>
-    </div>
-  );
-};
 
 interface AccordionProps {
   items: Array<{ title: string; content: React.ReactNode }>;
   allowMultiple?: boolean; // Позволяет ли открывать несколько секций одновременно
+  variant?: 'list' | 'buttons';
+  onOpenIndexChange?: (indexes: number[]) => void;
+  initialIndexes?: number[];
 }
 
 const Accordion: React.FC<AccordionProps> = ({
   items,
   allowMultiple = false,
+  variant = 'list',
+  onOpenIndexChange,
+  initialIndexes = [0],
 }) => {
-  const [openIndexes, setOpenIndexes] = useState<number[]>([]);
+  const { wrapper } = baseAccordionStyles({ variant });
+
+  const [openIndexes, setOpenIndexes] = useState<number[]>(initialIndexes);
 
   const toggleItem = (index: number) => {
     if (allowMultiple) {
@@ -83,15 +34,20 @@ const Accordion: React.FC<AccordionProps> = ({
     }
   };
 
+  useEffect(() => {
+    onOpenIndexChange && onOpenIndexChange(openIndexes);
+  }, [onOpenIndexChange, openIndexes]);
+
   return (
-    <div>
+    <div className={wrapper()}>
       {items.map((item, index) => (
-        <AccordionItem
+        <AccordionSection
           key={index}
           title={item.title}
           content={item.content}
           isOpen={openIndexes.includes(index)}
           onToggle={() => toggleItem(index)}
+          variant={variant}
         />
       ))}
     </div>

@@ -1,6 +1,5 @@
 import CourseCard from '../CourseCard';
 import { CourseCardProps } from '../CourseCard/CourseCard';
-import Accordion from './Accordion';
 
 const AI: CourseCardProps[] = [
   {
@@ -101,10 +100,62 @@ export const accordionItems = [
   },
 ];
 
-const App = () => (
-  <div className="p-4">
-    <Accordion items={accordionItems} allowMultiple={true} />
-  </div>
-);
-
-export default App;
+export const accordionContainerMock = [
+  {
+    title: 'AI-assisted learning',
+    content: (
+      <p>
+        Make progress faster with our AI Learning Assistant, a tool that
+        automatically understands your current course, instructions, and
+        solution code — and gives you instant, personalized feedback.
+      </p>
+    ),
+    image: '/ala_demo.png',
+  },
+  {
+    title: 'Real-world projects',
+    content: (
+      <p>
+        Take what you&apos;re learning into the real world. Choose from guided
+        projects that help you solidify new concepts — or test yourself with
+        independent projects designed to build your portfolio.
+      </p>
+    ),
+    image: '/real-world-projects.webp',
+  },
+  {
+    title: 'Job-readiness checker',
+    content: (
+      <p>
+        See how well your skills and experience meet the requirements for jobs
+        you&apos;re interested in. AI generates a personalized report to show
+        you how ready you are for your dream job and where to improve to qualify
+        for a role.
+      </p>
+    ),
+    image: '/job-readiness-checker.gif',
+  },
+  {
+    title: 'Interview simulator',
+    content: (
+      <p>
+        Use AI to identify strengths and get personalized, actionable feedback
+        to improve your interviewing skills. Easily see what&apos;s needed to
+        improve your skills — no matter what stage you&apos;re at in your
+        career.
+      </p>
+    ),
+    image: '/interview-simulator.gif',
+  },
+  {
+    title: 'Assessments',
+    content: (
+      <p>
+        Test new skills as you learn them so you can better understand and apply
+        new concepts. You&apos;ll also see which topics need more review and get
+        practice recommendations to continue to improve.
+      </p>
+    ),
+    image: '/assessments.webp',
+  },
+];
