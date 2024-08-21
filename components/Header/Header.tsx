@@ -4,7 +4,7 @@ import Link from 'next/link';
 import React, { useEffect, useRef, useState } from 'react';
 import Image from 'next/image';
 import { FaShoppingCart, FaGlobe, FaBars } from 'react-icons/fa';
-import { ROUTES } from '../../constants/routes';
+import { ROUTES } from '../../app/constants/routes';
 import Drawer from '../Drawer';
 import CategoryList from '../CategoryList';
 import AuthButtons from '../AuthButtons';

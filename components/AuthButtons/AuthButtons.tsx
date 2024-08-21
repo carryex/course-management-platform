@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import { FaUserCircle } from 'react-icons/fa';
-import { ROUTES } from '../../constants/routes';
+import { ROUTES } from '../../app/constants/routes';
 import Button from '../Button';
 
 interface AuthButtonsProps {

@@ -9,11 +9,6 @@ const HandsOnLearning: React.FC = () => {
 
   return (
     <>
-      <div>
-        <p className="text-xl text-white text-center">The platform</p>
-        <h2 className="text-4xl text-white text-center">Hands-on learning</h2>
-      </div>
-
       <div className="flex flex-col lg:flex-row-reverse gap-5">
         <div className="w-full lg:w-3/5">
           {accordionContainerMock[activeIndex[0]] && (
