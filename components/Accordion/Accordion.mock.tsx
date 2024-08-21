@@ -41,7 +41,7 @@ export const accordionItems = [
   {
     title: 'AI',
     content: (
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
         {AI.map((course) => (
           <CourseCard {...course} key={course.title} />
         ))}
@@ -51,7 +51,7 @@ export const accordionItems = [
   {
     title: 'Free',
     content: (
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
         {AI.map((course) => (
           <CourseCard {...course} key={course.title} />
         ))}
@@ -61,7 +61,7 @@ export const accordionItems = [
   {
     title: 'New to coding',
     content: (
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
         {AI.map((course) => (
           <CourseCard {...course} key={course.title} />
         ))}
@@ -71,7 +71,7 @@ export const accordionItems = [
   {
     title: 'Most popular',
     content: (
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
         {AI.map((course) => (
           <CourseCard {...course} key={course.title} />
         ))}
@@ -81,7 +81,7 @@ export const accordionItems = [
   {
     title: 'Skill paths',
     content: (
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
         {AI.map((course) => (
           <CourseCard {...course} key={course.title} />
         ))}
@@ -91,7 +91,7 @@ export const accordionItems = [
   {
     title: 'Career paths',
     content: (
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
         {AI.map((course) => (
           <CourseCard {...course} key={course.title} />
         ))}

@@ -11,12 +11,10 @@ const PopularCoursesSection = () => {
     <div className="w-full">
       <SectionContainer className="bg-gray-900">
         <SectionHeader title="Popular Courses" subtitle="Start Learning" />
-        {/* <p className="text-xl text-white text-center">Start Learning</p>
-        <h2 className="text-4xl text-white text-center">Popular Courses</h2> */}
-        <div className="pt-8 lg:hidden">
+        <div className="lg:hidden">
           <Accordion items={accordionItems} />
         </div>
-        <div className="pt-8 hidden lg:block">
+        <div className="hidden lg:block">
           <TabsWithContent tabs={tabs}>{tabsContent}</TabsWithContent>
         </div>
       </SectionContainer>

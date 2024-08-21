@@ -9,7 +9,7 @@ const HandsOnLearning: React.FC = () => {
 
   return (
     <>
-      <div className="flex flex-col lg:flex-row-reverse gap-5">
+      <div className="flex flex-col lg:flex-row-reverse gap-8 lg:gap-16">
         <div className="w-full lg:w-3/5">
           {accordionContainerMock[activeIndex[0]] && (
             <Image

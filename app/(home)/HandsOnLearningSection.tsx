@@ -1,15 +1,12 @@
 import HandsOnLearning from '@/components/HandsOnLearning/HandsOnLearning';
 import SectionContainer from './components/SectionContainer';
+import SectionHeader from './components/SectionHeader';
 
 const HandsOnLearningSection = () => {
   return (
     <div className="w-full">
-      <SectionContainer className="bg-gray-900 flex flex-col gap-6">
-        <div>
-          <p className="text-xl text-white text-center">The platform</p>
-          <h2 className="text-4xl text-white text-center">Hands-on learning</h2>
-        </div>
-
+      <SectionContainer className="bg-gray-900 flex flex-col">
+        <SectionHeader title="Hands-on learning" subtitle="The platform" />
         <HandsOnLearning />
       </SectionContainer>
     </div>

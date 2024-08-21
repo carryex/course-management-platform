@@ -15,7 +15,7 @@ export const baseAccordionStyles = tv({
     variant: {
       list: {},
       buttons: {
-        wrapper: 'flex flex-col gap-3',
+        wrapper: 'flex flex-col gap-4',
         base: 'border-0 rounded-md hover:bg-gray-700 px-4 py-4',
         content: 'text-gray-400 font-medium',
         button: 'p-0',
