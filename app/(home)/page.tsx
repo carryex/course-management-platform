@@ -3,8 +3,8 @@ import AuthSection from './AuthSection';
 import QuizSection from './QuizSection';
 import PopularCoursesSection from './PopularCoursesSection';
 import HandsOnLearningSection from './HandsOnLearningSection';
-import SectionContainer from './components/SectionContainer';
 import JobReadinessChecker from './JobReadinessChecker';
+import PeopleStories from './PeopleStories';
 
 export default function Home() {
   return (
@@ -21,6 +21,8 @@ export default function Home() {
       <JobReadinessChecker />
 
       <HandsOnLearningSection />
+
+      <PeopleStories />
     </main>
   );
 }

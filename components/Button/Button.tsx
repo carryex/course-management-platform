@@ -11,6 +11,7 @@ interface ButtonProps extends ButtonVariants {
   link?: boolean;
   href?: string;
   children: React.ReactNode;
+  className?: string;
 }
 
 const Button: React.FC<ButtonProps> = (props) => {
@@ -24,19 +25,28 @@ const Button: React.FC<ButtonProps> = (props) => {
     onClick,
     disabled,
     fullWidth = false,
+    className = '',
   } = props;
   const buttonClass = baseButton({ variant, size, color, fullWidth });
 
   if (link && href) {
     return (
-      <Link href={href} className={buttonClass} onClick={onClick}>
+      <Link
+        href={href}
+        className={buttonClass.concat(` ${className}`)}
+        onClick={onClick}
+      >
         {children}
       </Link>
     );
   }
 
   return (
-    <button className={buttonClass} onClick={onClick} disabled={disabled}>
+    <button
+      className={buttonClass.concat(` ${className}`)}
+      onClick={onClick}
+      disabled={disabled}
+    >
       {children}
     </button>
   );
