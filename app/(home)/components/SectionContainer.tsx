@@ -9,7 +9,7 @@ const SectionContainer: React.FC<SectionContainerProps> = ({
   children,
   className = '',
 }) => {
-  const classes = className.concat(' py-16 px-4 sm:px-6 md:px-10 lg:px-14');
+  const classes = className.concat(' py-16 px-4 sm:px-8 md:px-16 lg:px-24');
   return <div className={classes}>{children}</div>;
 };
 

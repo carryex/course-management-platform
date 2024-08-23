@@ -26,8 +26,10 @@ export const baseAccordionStyles = tv({
       true: {
         icon: 'rotate-90',
         title: 'text-white',
-        base: 'bg-gray-700',
       },
     },
   },
+  compoundVariants: [
+    { open: true, variant: 'buttons', className: 'bg-gray-700' },
+  ],
 });
