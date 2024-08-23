@@ -1,10 +1,10 @@
-import { accordionItems } from '@/components/Accordion/Accordion.mock';
 import SliderSection from './SliderSection';
 import AuthSection from './AuthSection';
 import QuizSection from './QuizSection';
 import PopularCoursesSection from './PopularCoursesSection';
 import HandsOnLearningSection from './HandsOnLearningSection';
 import SectionContainer from './components/SectionContainer';
+import JobReadinessChecker from './JobReadinessChecker';
 
 export default function Home() {
   return (
@@ -18,9 +18,7 @@ export default function Home() {
 
       <PopularCoursesSection />
 
-      <div className="w-full min-h-1 ">
-        <SectionContainer className="bg-white">sdfadsfsadfas</SectionContainer>
-      </div>
+      <JobReadinessChecker />
 
       <HandsOnLearningSection />
     </main>
