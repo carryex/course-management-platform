@@ -23,7 +23,7 @@ const Button: React.FC<ButtonProps> = (props) => {
     children,
     onClick,
     disabled,
-    fullWidth,
+    fullWidth = false,
   } = props;
   const buttonClass = baseButton({ variant, size, color, fullWidth });
 

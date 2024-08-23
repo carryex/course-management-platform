@@ -21,6 +21,7 @@ export const baseButton = tv({
     },
     fullWidth: {
       true: 'w-full',
+      false: 'w-fit',
     },
   },
   compoundVariants: [
