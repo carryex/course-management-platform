@@ -1,7 +1,7 @@
 {
   "name": "Next.js DevContainer",
-  "dockerFile": "Dockerfile",
-  "context": "..",
+  "dockerComposeFile": "docker-compose.yml",
+  "service": "app",
   "workspaceFolder": "/workspace",
   "mounts": [
     "source=${localEnv:HOME}/.ssh,target=/root/.ssh,type=bind,consistency=cached"
@@ -14,13 +14,17 @@
       }
     }
   },
-  "forwardPorts": [3000],
+  "forwardPorts": [3000, 27017],
   "postCreateCommand": "echo 'Dev container initialized'",
   "remoteUser": "root",
   "portsAttributes": {
     "3000": {
       "label": "Next.js App",
       "onAutoForward": "openBrowser"
+    },
+    "27017": {
+      "label": "MongoDB",
+      "onAutoForward": "notify"
     }
   }
 }
