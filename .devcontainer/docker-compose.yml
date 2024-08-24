@@ -1,26 +1,19 @@
-version: '3.8'
-
 services:
-  app:
+  net:
+    image: alpine:latest
+    command: /bin/sh -c "tail -f /dev/null"
+  mongo:
+    image: mongo:6
+    volumes:
+      - ../data:/data/db
+    network_mode: service:net
+  dev-container:
     build:
-      context: ..
-      dockerfile: .devcontainer/Dockerfile
+      context: .
+      dockerfile: Dockerfile
+    command: /bin/sh -c "tail -f /dev/null"
     volumes:
       - ..:/workspace:cached
-    command: bash -c "yarn install && yarn dev"
-    ports:
-      - 3000:3000
-    environment:
-      - MONGO_URL=mongodb://mongo:27017/mydatabase
-    depends_on:
-      - mongo
-
-  mongo:
-    image: mongo:6.0
-    ports:
-      - 27017:27017
-    volumes:
-      - mongo-data:/data/db
-
-volumes:
-  mongo-data:
+      - $HOME/.ssh:/home/user/.ssh
+      - /var/run/docker.sock:/var/run/docker.sock:rw
+    network_mode: service:net

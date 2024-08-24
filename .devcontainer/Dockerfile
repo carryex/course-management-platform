@@ -1,20 +1,30 @@
-# Используем базовый образ Node.js 18.18
-FROM node:18.18-alpine
+FROM ubuntu:22.04
+RUN apt-get update && apt-get install -y ca-certificates curl git gnupg sudo vim zsh 
+RUN curl -fsSL https://deb.nodesource.com/setup_18.x | sudo -E bash - && sudo apt-get install -y nodejs
+RUN npm install --global yarn
 
-# Устанавливаем рабочую директорию внутри контейнера
-WORKDIR /workspace
+# install docker
+RUN mkdir -m 0755 -p /etc/apt/keyrings
+RUN curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
+RUN echo \
+  "deb [arch="$(dpkg --print-architecture)" signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu \
+  "$(. /etc/os-release && echo "$VERSION_CODENAME")" stable" | \
+  tee /etc/apt/sources.list.d/docker.list > /dev/null
+RUN apt-get update && apt-get install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
 
-# Устанавливаем необходимые зависимости (bash, git)
-RUN apk add --no-cache bash git
+# Set up non-root user
+ARG USERNAME=user
+ARG USER_UID=1000
+ARG USER_GID=$USER_UID
+RUN groupadd --gid $USER_GID $USERNAME \
+  && useradd --uid $USER_UID --gid $USER_GID -m $USERNAME \
+  && echo $USERNAME ALL=\(root\) NOPASSWD:ALL > /etc/sudoers.d/$USERNAME \
+  && chmod 0440 /etc/sudoers.d/$USERNAME
+USER $USERNAME
 
-# Оставляем этот этап пустым, пока проект пустой
-COPY . .
+ENV SHELL=/usr/bin/zsh
+ENV EDITOR=/usr/bin/vim
+RUN sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 
-# Устанавливаем рабочую директорию по умолчанию
-WORKDIR /workspace
 
-# Устанавливаем порт по умолчанию
-EXPOSE 3000
-
-# Указываем команду по умолчанию (временно можно использовать bash)
-CMD ["/bin/bash"]
+RUN git config --global --add safe.directory /workspace
