@@ -7,6 +7,10 @@ services:
     volumes:
       - ../data:/data/db
     network_mode: service:net
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: example
+      MONGO_INITDB_DATABASE: mydatabase
   dev-container:
     build:
       context: .
