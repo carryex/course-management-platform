@@ -8,5 +8,6 @@
     "typescript",
     "typescriptreact"
   ],
-  "prettier.requireConfig": true
+  "prettier.requireConfig": true,
+  "WillLuke.nextjs.hasPrompted": true
 }

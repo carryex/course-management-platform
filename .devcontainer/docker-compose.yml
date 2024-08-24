@@ -2,15 +2,16 @@ services:
   net:
     image: alpine:latest
     command: /bin/sh -c "tail -f /dev/null"
-  mongo:
-    image: mongo:6
-    volumes:
-      - ../data:/data/db
-    network_mode: service:net
+  postgres:
+    restart: always
+    container_name: postgres
+    image: postgres:16.4
     environment:
-      MONGO_INITDB_ROOT_USERNAME: root
-      MONGO_INITDB_ROOT_PASSWORD: example
-      MONGO_INITDB_DATABASE: mydatabase
+      POSTGRES_DB: cmp
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: password
+    ports:
+      - '5432:5432'
   dev-container:
     build:
       context: .
