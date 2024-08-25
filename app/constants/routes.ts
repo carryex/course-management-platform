@@ -37,4 +37,7 @@ export const ROUTES = {
     path: '/contact',
     label: 'Contact',
   },
+  LEARN: {
+    path: '/learn',
+  },
 };

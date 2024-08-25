@@ -68,13 +68,11 @@ const Header: React.FC<HeaderProps> = ({
   }, [isLanguageMenuOpen]);
 
   return (
-    <header className="bg-white py-4 px-4 sm:px-6 md:px-10 lg:px-14 flex justify-between items-center flex-wrap">
-      {/* Гамбургер-меню для мобильных устройств */}
+    <header className="bg-white py-4 px-4 sm:px-8 md:px-16 lg:px-24 flex justify-between items-center flex-wrap">
       <div className="md:hidden justify-center flex">
         <IconButton onClick={toggleDrawer} icon={FaBars} />
       </div>
 
-      {/* Логотип */}
       <div className="md:flex-shrink-0 md:pr-2 flex-grow md:flex-grow-0">
         <Link
           href={ROUTES.HOME.path}
@@ -84,7 +82,6 @@ const Header: React.FC<HeaderProps> = ({
         </Link>
       </div>
 
-      {/* Categories */}
       {categories && (
         <div
           className="relative flex-shrink-0 px-2 hidden md:block"
@@ -101,7 +98,6 @@ const Header: React.FC<HeaderProps> = ({
           )}
         </div>
       )}
-      {/* Поиск */}
       <div className="flex-grow px-2 hidden md:block">
         <input
           type="text"
@@ -110,7 +106,6 @@ const Header: React.FC<HeaderProps> = ({
         />
       </div>
 
-      {/* Teach on Platform */}
       <Link
         href={ROUTES.TEACH.path}
         className="text-gray-600 hover:text-gray-900 px-2 flex-shrink-0 whitespace-nowrap lg:block hidden"
@@ -118,7 +113,6 @@ const Header: React.FC<HeaderProps> = ({
         Teach on Platform
       </Link>
 
-      {/* Cart */}
       <div className="justify-center flex px-2 flex-shrink-0">
         <IconButton
           icon={FaShoppingCart}
@@ -127,12 +121,10 @@ const Header: React.FC<HeaderProps> = ({
         />
       </div>
 
-      {/* Аутентификация */}
       <div className="flex-shrink-0 whitespace-nowrap px-2 hidden md:block">
         <AuthButtons />
       </div>
 
-      {/* Language Selector */}
       {languages && (
         <div className="relative flex" ref={languageMenuRef}>
           <div className="justify-center flex pl-2 flex-shrink-0">
