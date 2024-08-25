@@ -1,12 +1,14 @@
+'use client';
 import React from 'react';
 import {
-  FaGoogle,
-  FaFacebook,
-  FaLinkedin,
+  // FaGoogle,
+  // FaFacebook,
+  // FaLinkedin,
   FaGithub,
-  FaTwitter,
-  FaApple,
+  // FaTwitter,
+  // FaApple,
 } from 'react-icons/fa';
+import { signIn } from 'next-auth/react';
 import Button from '../Button';
 
 interface AuthFormProps {
@@ -15,6 +17,9 @@ interface AuthFormProps {
 
 const AuthForm: React.FC<AuthFormProps> = ({ mode }) => {
   const isLogin = mode === 'login';
+  const handleGitHubClick = () => {
+    signIn('github');
+  };
 
   return (
     <div className="p-6 rounded-lg bg-white max-w-md">
@@ -64,12 +69,16 @@ const AuthForm: React.FC<AuthFormProps> = ({ mode }) => {
           Or {isLogin ? 'log in' : 'sign up'} using:
         </p>
         <div className="flex justify-start space-x-4">
-          <FaGoogle className="text-2xl cursor-pointer" />
-          <FaFacebook className="text-2xl cursor-pointer" />
-          <FaLinkedin className="text-2xl cursor-pointer" />
-          <FaGithub className="text-2xl cursor-pointer" />
-          <FaTwitter className="text-2xl cursor-pointer" />
-          <FaApple className="text-2xl cursor-pointer" />
+          {/* <FaGoogle className="text-2xl cursor-pointer" /> */}
+          {/* <FaFacebook className="text-2xl cursor-pointer" /> */}
+          {/* <FaLinkedin className="text-2xl cursor-pointer" /> */}
+          <FaGithub
+            className="text-2xl cursor-pointer"
+            onClick={handleGitHubClick}
+          />
+          {/* <button className="cursor-pointer" onClick={handleGitHubClick}><FaGithub className="text-2xl cursor-pointer" /></button> */}
+          {/* <FaTwitter className="text-2xl cursor-pointer" /> */}
+          {/* <FaApple className="text-2xl cursor-pointer" /> */}
         </div>
       </div>
 

@@ -129,7 +129,7 @@ const Header: React.FC<HeaderProps> = ({
 
       {/* Аутентификация */}
       <div className="flex-shrink-0 whitespace-nowrap px-2 hidden md:block">
-        <AuthButtons isLoggedIn={isLoggedIn} />
+        <AuthButtons />
       </div>
 
       {/* Language Selector */}
@@ -158,7 +158,7 @@ const Header: React.FC<HeaderProps> = ({
       <Drawer isOpen={isDrawerOpen} onClose={toggleDrawer} position="left">
         {categories && <CategoryList categories={categories} />}
         <div className="mt-4">
-          <AuthButtons isLoggedIn={isLoggedIn} />
+          <AuthButtons />
         </div>
       </Drawer>
     </header>

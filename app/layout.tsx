@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import './globals.css';
-import HeaderContainer from '../components/Header/HeaderContainer';
+import HeaderContainer from './components/HeaderContainer';
+import SessionWrapper from '@/app/components/SessionWrapper';
 
 export const metadata: Metadata = {
   title: 'Create Next App',
@@ -13,13 +14,15 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className="min-w-96 w-full flex justify-center">
-        <div className="max-w-screen-2xl w-full">
-          <HeaderContainer />
-          {children}
-        </div>
-      </body>
-    </html>
+    <SessionWrapper>
+      <html lang="en">
+        <body className="min-w-96 w-full flex justify-center">
+          <div className="max-w-screen-2xl w-full">
+            <HeaderContainer />
+            {children}
+          </div>
+        </body>
+      </html>
+    </SessionWrapper>
   );
 }
