@@ -1,16 +1,12 @@
 {
   "name": "dev-container",
-  "dockerComposeFile": [
-    "./docker-compose.yml"
-  ],
+  "dockerComposeFile": ["./docker-compose.yml"],
   "service": "dev-container",
   "remoteUser": "user",
   "workspaceFolder": "/workspace",
   "customizations": {
     "vscode": {
-      "extensions": [
-        "ms-azuretools.vscode-docker"
-      ]
+      "extensions": ["ms-azuretools.vscode-docker"]
     }
   }
 }
